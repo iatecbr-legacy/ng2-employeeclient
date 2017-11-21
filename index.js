@@ -4,7 +4,6 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./api/api"));
-__export(require("./model/models"));
 __export(require("./variables"));
 __export(require("./configuration"));
 __export(require("./api.module"));

@@ -10,12 +10,12 @@ export declare class ReportsApi {
     defaultHeaders: Headers;
     configuration: Configuration;
     constructor(http: Http, basePath: string, configuration: Configuration);
-    getIncomeReport(year: number, extraHttpRequestParams?: any): Observable<Array<models.InlineResponse2002>>;
-    getIncomeReportListing(extraHttpRequestParams?: any): Observable<Array<models.InlineResponse2002>>;
-    getTitheReport(period: number, extraHttpRequestParams?: any): Observable<models.VacationReceipt>;
-    getTitheReportListing(extraHttpRequestParams?: any): Observable<Array<models.InlineResponse2003>>;
+    getIncomeReport(year: number, extraHttpRequestParams?: any): Observable<models.IncomeReport>;
+    getTitheReport(period: number, extraHttpRequestParams?: any): Observable<models.TitheReport>;
+    listIncomeReports(extraHttpRequestParams?: any): Observable<Array<models.IncomeReportListingItem>>;
+    listTitheReports(extraHttpRequestParams?: any): Observable<Array<models.TitheReportListingItem>>;
     getIncomeReportWithHttpInfo(year: number, extraHttpRequestParams?: any): Observable<Response>;
-    getIncomeReportListingWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
     getTitheReportWithHttpInfo(period: number, extraHttpRequestParams?: any): Observable<Response>;
-    getTitheReportListingWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
+    listIncomeReportsWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
+    listTitheReportsWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
 }

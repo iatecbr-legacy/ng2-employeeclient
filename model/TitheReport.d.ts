@@ -1,3 +1,7 @@
+import * as models from './models';
 export interface TitheReport {
-    remarks?: string;
+    entries?: Array<models.TitheReportEntry>;
+    total?: number;
+    titheValue?: number;
+    suggestedOfferingValue?: number;
 }

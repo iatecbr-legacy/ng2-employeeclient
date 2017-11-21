@@ -1,4 +1,4 @@
-## undefined@1.0.0-preview-5
+## @iatec/ng2-employeeclient@1.0.0-preview-7
 
 ### Building
 
@@ -19,7 +19,7 @@ navigate to the folder of your consuming project and run one of next commando's.
 _published:_
 
 ```
-npm install undefined@1.0.0-preview-5 --save
+npm install @iatec/ng2-employeeclient@1.0.0-preview-7 --save
 ```
 
 _unPublished (not recommended):_

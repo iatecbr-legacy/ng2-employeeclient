@@ -21,7 +21,7 @@ var configuration_1 = require("../configuration");
 var ReimbursementApi = (function () {
     function ReimbursementApi(http, basePath, configuration) {
         this.http = http;
-        this.basePath = 'https://virtserver.swaggerhub.com/iatec/Employee/1.0.0-preview-1';
+        this.basePath = 'https://ws-rh-online-dev.sdasystems.org';
         this.defaultHeaders = new http_1.Headers();
         this.configuration = new configuration_1.Configuration();
         if (basePath) {
@@ -31,8 +31,8 @@ var ReimbursementApi = (function () {
             this.configuration = configuration;
         }
     }
-    ReimbursementApi.prototype.getReimbursementListing = function (kind, count, maxperiod, extraHttpRequestParams) {
-        return this.getReimbursementListingWithHttpInfo(kind, count, maxperiod, extraHttpRequestParams)
+    ReimbursementApi.prototype.getMonthlyDeclaration = function (period, extraHttpRequestParams) {
+        return this.getMonthlyDeclarationWithHttpInfo(period, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -42,8 +42,8 @@ var ReimbursementApi = (function () {
             }
         });
     };
-    ReimbursementApi.prototype.getStandardReimbursement = function (period, extraHttpRequestParams) {
-        return this.getStandardReimbursementWithHttpInfo(period, extraHttpRequestParams)
+    ReimbursementApi.prototype.listMonthlyDeclarations = function (count, maxperiod, extraHttpRequestParams) {
+        return this.listMonthlyDeclarationsWithHttpInfo(count, maxperiod, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -53,24 +53,33 @@ var ReimbursementApi = (function () {
             }
         });
     };
-    ReimbursementApi.prototype.getTravelReimbursement = function (period, extraHttpRequestParams) {
-        return this.getTravelReimbursementWithHttpInfo(period, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json() || {};
-            }
-        });
-    };
-    ReimbursementApi.prototype.getReimbursementListingWithHttpInfo = function (kind, count, maxperiod, extraHttpRequestParams) {
-        var path = this.basePath + '/reimbursements';
+    ReimbursementApi.prototype.getMonthlyDeclarationWithHttpInfo = function (period, extraHttpRequestParams) {
+        var path = this.basePath + '/reimbursement/monthly-declarations/${period}'
+            .replace('${' + 'period' + '}', String(period));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        if (kind !== undefined) {
-            queryParameters.set('kind', kind);
+        if (period === null || period === undefined) {
+            throw new Error('Required parameter period was null or undefined when calling getMonthlyDeclaration.');
         }
+        var consumes = [];
+        var produces = [
+            'application/json'
+        ];
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials: this.configuration.withCredentials
+        });
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    ReimbursementApi.prototype.listMonthlyDeclarationsWithHttpInfo = function (count, maxperiod, extraHttpRequestParams) {
+        var path = this.basePath + '/reimbursement/monthly-declarations';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON());
         if (count !== undefined) {
             queryParameters.set('count', count);
         }
@@ -79,55 +88,6 @@ var ReimbursementApi = (function () {
         }
         var consumes = [];
         var produces = [
-            'application/xml',
-            'application/json'
-        ];
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials: this.configuration.withCredentials
-        });
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    ReimbursementApi.prototype.getStandardReimbursementWithHttpInfo = function (period, extraHttpRequestParams) {
-        var path = this.basePath + '/reimbursements/standard/${period}'
-            .replace('${' + 'period' + '}', String(period));
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        if (period === null || period === undefined) {
-            throw new Error('Required parameter period was null or undefined when calling getStandardReimbursement.');
-        }
-        var consumes = [];
-        var produces = [
-            'application/xml',
-            'application/json'
-        ];
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials: this.configuration.withCredentials
-        });
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    ReimbursementApi.prototype.getTravelReimbursementWithHttpInfo = function (period, extraHttpRequestParams) {
-        var path = this.basePath + '/reimbursements/travel/${period}'
-            .replace('${' + 'period' + '}', String(period));
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        if (period === null || period === undefined) {
-            throw new Error('Required parameter period was null or undefined when calling getTravelReimbursement.');
-        }
-        var consumes = [];
-        var produces = [
-            'application/xml',
             'application/json'
         ];
         var requestOptions = new http_2.RequestOptions({

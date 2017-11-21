@@ -21,7 +21,7 @@ var configuration_1 = require("../configuration");
 var ReportsApi = (function () {
     function ReportsApi(http, basePath, configuration) {
         this.http = http;
-        this.basePath = 'https://virtserver.swaggerhub.com/iatec/Employee/1.0.0-preview-1';
+        this.basePath = 'https://ws-rh-online-dev.sdasystems.org';
         this.defaultHeaders = new http_1.Headers();
         this.configuration = new configuration_1.Configuration();
         if (basePath) {
@@ -42,17 +42,6 @@ var ReportsApi = (function () {
             }
         });
     };
-    ReportsApi.prototype.getIncomeReportListing = function (extraHttpRequestParams) {
-        return this.getIncomeReportListingWithHttpInfo(extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json() || {};
-            }
-        });
-    };
     ReportsApi.prototype.getTitheReport = function (period, extraHttpRequestParams) {
         return this.getTitheReportWithHttpInfo(period, extraHttpRequestParams)
             .map(function (response) {
@@ -64,8 +53,19 @@ var ReportsApi = (function () {
             }
         });
     };
-    ReportsApi.prototype.getTitheReportListing = function (extraHttpRequestParams) {
-        return this.getTitheReportListingWithHttpInfo(extraHttpRequestParams)
+    ReportsApi.prototype.listIncomeReports = function (extraHttpRequestParams) {
+        return this.listIncomeReportsWithHttpInfo(extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json() || {};
+            }
+        });
+    };
+    ReportsApi.prototype.listTitheReports = function (extraHttpRequestParams) {
+        return this.listTitheReportsWithHttpInfo(extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -76,7 +76,7 @@ var ReportsApi = (function () {
         });
     };
     ReportsApi.prototype.getIncomeReportWithHttpInfo = function (year, extraHttpRequestParams) {
-        var path = this.basePath + '/income-reports/${year}'
+        var path = this.basePath + '/reports/income/${year}'
             .replace('${' + 'year' + '}', String(year));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
@@ -85,27 +85,6 @@ var ReportsApi = (function () {
         }
         var consumes = [];
         var produces = [
-            'application/xml',
-            'application/json'
-        ];
-        var requestOptions = new http_2.RequestOptions({
-            method: http_2.RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials: this.configuration.withCredentials
-        });
-        if (extraHttpRequestParams) {
-            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
-        }
-        return this.http.request(path, requestOptions);
-    };
-    ReportsApi.prototype.getIncomeReportListingWithHttpInfo = function (extraHttpRequestParams) {
-        var path = this.basePath + '/income-reports';
-        var queryParameters = new http_1.URLSearchParams();
-        var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        var consumes = [];
-        var produces = [
-            'application/xml',
             'application/json'
         ];
         var requestOptions = new http_2.RequestOptions({
@@ -120,7 +99,7 @@ var ReportsApi = (function () {
         return this.http.request(path, requestOptions);
     };
     ReportsApi.prototype.getTitheReportWithHttpInfo = function (period, extraHttpRequestParams) {
-        var path = this.basePath + '/tithe-reports/${period}'
+        var path = this.basePath + '/reports/tithe/${period}'
             .replace('${' + 'period' + '}', String(period));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
@@ -129,7 +108,6 @@ var ReportsApi = (function () {
         }
         var consumes = [];
         var produces = [
-            'application/xml',
             'application/json'
         ];
         var requestOptions = new http_2.RequestOptions({
@@ -143,13 +121,31 @@ var ReportsApi = (function () {
         }
         return this.http.request(path, requestOptions);
     };
-    ReportsApi.prototype.getTitheReportListingWithHttpInfo = function (extraHttpRequestParams) {
-        var path = this.basePath + '/tithe-reports';
+    ReportsApi.prototype.listIncomeReportsWithHttpInfo = function (extraHttpRequestParams) {
+        var path = this.basePath + '/reports/income';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
         var consumes = [];
         var produces = [
-            'application/xml',
+            'application/json'
+        ];
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials: this.configuration.withCredentials
+        });
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    ReportsApi.prototype.listTitheReportsWithHttpInfo = function (extraHttpRequestParams) {
+        var path = this.basePath + '/reports/tithe';
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON());
+        var consumes = [];
+        var produces = [
             'application/json'
         ];
         var requestOptions = new http_2.RequestOptions({

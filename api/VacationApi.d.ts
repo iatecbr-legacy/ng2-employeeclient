@@ -10,8 +10,8 @@ export declare class VacationApi {
     defaultHeaders: Headers;
     configuration: Configuration;
     constructor(http: Http, basePath: string, configuration: Configuration);
-    getManyVacationReceipts(count: number, maxperiod: number, extraHttpRequestParams?: any): Observable<Array<models.InlineResponse2001>>;
     getVacationReceipt(period: number, extraHttpRequestParams?: any): Observable<models.VacationReceipt>;
-    getManyVacationReceiptsWithHttpInfo(count: number, maxperiod: number, extraHttpRequestParams?: any): Observable<Response>;
+    listVacationReceipts(count: number, maxperiod: number, extraHttpRequestParams?: any): Observable<Array<models.VacationReceiptListingItem>>;
     getVacationReceiptWithHttpInfo(period: number, extraHttpRequestParams?: any): Observable<Response>;
+    listVacationReceiptsWithHttpInfo(count: number, maxperiod: number, extraHttpRequestParams?: any): Observable<Response>;
 }

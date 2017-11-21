@@ -1,7 +1,7 @@
 {
-  "name": "undefined",
-  "version": "1.0.0-preview-5",
-  "description": "swagger client for undefined",
+  "name": "@iatec/ng2-employeeclient",
+  "version": "1.0.0-preview-7",
+  "description": "swagger client for @iatec/ng2-employeeclient",
   "author": "Swagger Codegen Contributors",
   "keywords": [
     "swagger-client"
@@ -35,5 +35,9 @@
     "rxjs": "^5.5.2",
     "typescript": "^2.4.2",
     "zone.js": "^0.8.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iatecbr/ng2-employeeclient.git"
   }
 }

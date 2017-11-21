@@ -1,9 +1,11 @@
-export * from './PaycheckApi';
-import { PaycheckApi } from './PaycheckApi';
+export * from './PaychecksApi';
+import { PaychecksApi } from './PaychecksApi';
+export * from './ProfileApi';
+import { ProfileApi } from './ProfileApi';
 export * from './ReimbursementApi';
 import { ReimbursementApi } from './ReimbursementApi';
 export * from './ReportsApi';
 import { ReportsApi } from './ReportsApi';
 export * from './VacationApi';
 import { VacationApi } from './VacationApi';
-export declare const APIS: (typeof PaycheckApi | typeof ReimbursementApi | typeof ReportsApi | typeof VacationApi)[];
+export declare const APIS: (typeof PaychecksApi | typeof ProfileApi | typeof ReimbursementApi | typeof ReportsApi | typeof VacationApi)[];

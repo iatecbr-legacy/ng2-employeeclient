@@ -21,7 +21,7 @@ var configuration_1 = require("../configuration");
 var VacationApi = (function () {
     function VacationApi(http, basePath, configuration) {
         this.http = http;
-        this.basePath = 'https://virtserver.swaggerhub.com/iatec/Employee/1.0.0-preview-1';
+        this.basePath = 'https://ws-rh-online-dev.sdasystems.org';
         this.defaultHeaders = new http_1.Headers();
         this.configuration = new configuration_1.Configuration();
         if (basePath) {
@@ -31,17 +31,6 @@ var VacationApi = (function () {
             this.configuration = configuration;
         }
     }
-    VacationApi.prototype.getManyVacationReceipts = function (count, maxperiod, extraHttpRequestParams) {
-        return this.getManyVacationReceiptsWithHttpInfo(count, maxperiod, extraHttpRequestParams)
-            .map(function (response) {
-            if (response.status === 204) {
-                return undefined;
-            }
-            else {
-                return response.json() || {};
-            }
-        });
-    };
     VacationApi.prototype.getVacationReceipt = function (period, extraHttpRequestParams) {
         return this.getVacationReceiptWithHttpInfo(period, extraHttpRequestParams)
             .map(function (response) {
@@ -53,25 +42,27 @@ var VacationApi = (function () {
             }
         });
     };
-    VacationApi.prototype.getManyVacationReceiptsWithHttpInfo = function (count, maxperiod, extraHttpRequestParams) {
-        var path = this.basePath + '/vacations';
+    VacationApi.prototype.listVacationReceipts = function (count, maxperiod, extraHttpRequestParams) {
+        return this.listVacationReceiptsWithHttpInfo(count, maxperiod, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json() || {};
+            }
+        });
+    };
+    VacationApi.prototype.getVacationReceiptWithHttpInfo = function (period, extraHttpRequestParams) {
+        var path = this.basePath + '/vacation/receipts/${period}'
+            .replace('${' + 'period' + '}', String(period));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        if (count === null || count === undefined) {
-            throw new Error('Required parameter count was null or undefined when calling getManyVacationReceipts.');
-        }
-        if (maxperiod === null || maxperiod === undefined) {
-            throw new Error('Required parameter maxperiod was null or undefined when calling getManyVacationReceipts.');
-        }
-        if (count !== undefined) {
-            queryParameters.set('count', count);
-        }
-        if (maxperiod !== undefined) {
-            queryParameters.set('maxperiod', maxperiod);
+        if (period === null || period === undefined) {
+            throw new Error('Required parameter period was null or undefined when calling getVacationReceipt.');
         }
         var consumes = [];
         var produces = [
-            'application/xml',
             'application/json'
         ];
         var requestOptions = new http_2.RequestOptions({
@@ -85,17 +76,24 @@ var VacationApi = (function () {
         }
         return this.http.request(path, requestOptions);
     };
-    VacationApi.prototype.getVacationReceiptWithHttpInfo = function (period, extraHttpRequestParams) {
-        var path = this.basePath + '/vacations/${period}'
-            .replace('${' + 'period' + '}', String(period));
+    VacationApi.prototype.listVacationReceiptsWithHttpInfo = function (count, maxperiod, extraHttpRequestParams) {
+        var path = this.basePath + '/vacation/receipts';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        if (period === null || period === undefined) {
-            throw new Error('Required parameter period was null or undefined when calling getVacationReceipt.');
+        if (count === null || count === undefined) {
+            throw new Error('Required parameter count was null or undefined when calling listVacationReceipts.');
+        }
+        if (maxperiod === null || maxperiod === undefined) {
+            throw new Error('Required parameter maxperiod was null or undefined when calling listVacationReceipts.');
+        }
+        if (count !== undefined) {
+            queryParameters.set('count', count);
+        }
+        if (maxperiod !== undefined) {
+            queryParameters.set('maxperiod', maxperiod);
         }
         var consumes = [];
         var produces = [
-            'application/xml',
             'application/json'
         ];
         var requestOptions = new http_2.RequestOptions({
