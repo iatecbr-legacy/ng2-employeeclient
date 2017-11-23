@@ -1,6 +1,7 @@
 import * as models from './models';
 export interface ContactInfo {
     address?: models.ContactInfoAddress;
-    phones?: Array<models.ContactInfoPhone>;
+    homePhone?: models.ContactInfoPhone;
+    mobilePhone?: models.ContactInfoPhone;
     email?: string;
 }

@@ -10,8 +10,8 @@ export declare class ProfileApi {
     defaultHeaders: Headers;
     configuration: Configuration;
     constructor(http: Http, basePath: string, configuration: Configuration);
-    getAccountInfo(extraHttpRequestParams?: any): Observable<Array<models.ContactInfo>>;
-    setAccountInfo(contactInfo?: models.ContactInfo, extraHttpRequestParams?: any): Observable<{}>;
-    getAccountInfoWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
-    setAccountInfoWithHttpInfo(contactInfo?: models.ContactInfo, extraHttpRequestParams?: any): Observable<Response>;
+    getContactInfo(extraHttpRequestParams?: any): Observable<models.ContactInfo>;
+    setContactInfo(contactInfo?: models.ContactInfo, extraHttpRequestParams?: any): Observable<{}>;
+    getContactInfoWithHttpInfo(extraHttpRequestParams?: any): Observable<Response>;
+    setContactInfoWithHttpInfo(contactInfo?: models.ContactInfo, extraHttpRequestParams?: any): Observable<Response>;
 }

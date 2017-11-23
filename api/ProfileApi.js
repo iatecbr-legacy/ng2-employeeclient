@@ -31,8 +31,8 @@ var ProfileApi = (function () {
             this.configuration = configuration;
         }
     }
-    ProfileApi.prototype.getAccountInfo = function (extraHttpRequestParams) {
-        return this.getAccountInfoWithHttpInfo(extraHttpRequestParams)
+    ProfileApi.prototype.getContactInfo = function (extraHttpRequestParams) {
+        return this.getContactInfoWithHttpInfo(extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -42,8 +42,8 @@ var ProfileApi = (function () {
             }
         });
     };
-    ProfileApi.prototype.setAccountInfo = function (contactInfo, extraHttpRequestParams) {
-        return this.setAccountInfoWithHttpInfo(contactInfo, extraHttpRequestParams)
+    ProfileApi.prototype.setContactInfo = function (contactInfo, extraHttpRequestParams) {
+        return this.setContactInfoWithHttpInfo(contactInfo, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -53,7 +53,7 @@ var ProfileApi = (function () {
             }
         });
     };
-    ProfileApi.prototype.getAccountInfoWithHttpInfo = function (extraHttpRequestParams) {
+    ProfileApi.prototype.getContactInfoWithHttpInfo = function (extraHttpRequestParams) {
         var path = this.basePath + '/profile/contact-info';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
@@ -72,7 +72,7 @@ var ProfileApi = (function () {
         }
         return this.http.request(path, requestOptions);
     };
-    ProfileApi.prototype.setAccountInfoWithHttpInfo = function (contactInfo, extraHttpRequestParams) {
+    ProfileApi.prototype.setContactInfoWithHttpInfo = function (contactInfo, extraHttpRequestParams) {
         var path = this.basePath + '/profile/contact-info';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());

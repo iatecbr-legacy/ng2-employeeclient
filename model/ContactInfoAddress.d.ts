@@ -1,8 +1,9 @@
 export interface ContactInfoAddress {
-    line1?: string;
+    street?: string;
     number?: string;
-    line2?: string;
+    supplement?: string;
     neighborhood?: string;
     zip?: string;
-    cityState?: string;
+    city?: string;
+    state?: string;
 }
