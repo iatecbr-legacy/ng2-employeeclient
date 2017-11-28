@@ -80,12 +80,6 @@ var VacationApi = (function () {
         var path = this.basePath + '/vacation/receipts';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
-        if (count === null || count === undefined) {
-            throw new Error('Required parameter count was null or undefined when calling listVacationReceipts.');
-        }
-        if (maxperiod === null || maxperiod === undefined) {
-            throw new Error('Required parameter maxperiod was null or undefined when calling listVacationReceipts.');
-        }
         if (count !== undefined) {
             queryParameters.set('count', count);
         }

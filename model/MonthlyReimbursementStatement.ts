@@ -12,13 +12,19 @@
 
 import * as models from './models';
 
-export interface InternalAccountEntry {
-    day?: number;
+export interface MonthlyReimbursementStatement {
+    entityName?: string;
 
-    code?: string;
+    employeeCode?: string;
 
-    description?: string;
+    employeeName?: string;
 
-    value?: number;
+    departmentName?: string;
+
+    entries?: Array<models.MonthlyReimbursementStatementEntry>;
+
+    netValue?: number;
+
+    internalAccount?: models.InternalAccount;
 
 }

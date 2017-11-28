@@ -1,6 +1,5 @@
 export interface VacationReceiptListingItem {
-    date?: Date;
     period?: number;
-    grossValue?: number;
+    date?: Date;
     netValue?: number;
 }

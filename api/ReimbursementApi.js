@@ -31,8 +31,8 @@ var ReimbursementApi = (function () {
             this.configuration = configuration;
         }
     }
-    ReimbursementApi.prototype.getMonthlyDeclaration = function (period, extraHttpRequestParams) {
-        return this.getMonthlyDeclarationWithHttpInfo(period, extraHttpRequestParams)
+    ReimbursementApi.prototype.getMonthlyStatement = function (period, extraHttpRequestParams) {
+        return this.getMonthlyStatementWithHttpInfo(period, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -42,8 +42,8 @@ var ReimbursementApi = (function () {
             }
         });
     };
-    ReimbursementApi.prototype.listMonthlyDeclarations = function (count, maxperiod, extraHttpRequestParams) {
-        return this.listMonthlyDeclarationsWithHttpInfo(count, maxperiod, extraHttpRequestParams)
+    ReimbursementApi.prototype.listMonthlyStatements = function (count, maxperiod, extraHttpRequestParams) {
+        return this.listMonthlyStatementsWithHttpInfo(count, maxperiod, extraHttpRequestParams)
             .map(function (response) {
             if (response.status === 204) {
                 return undefined;
@@ -53,13 +53,13 @@ var ReimbursementApi = (function () {
             }
         });
     };
-    ReimbursementApi.prototype.getMonthlyDeclarationWithHttpInfo = function (period, extraHttpRequestParams) {
-        var path = this.basePath + '/reimbursement/monthly-declarations/${period}'
+    ReimbursementApi.prototype.getMonthlyStatementWithHttpInfo = function (period, extraHttpRequestParams) {
+        var path = this.basePath + '/reimbursement/monthly/statements/${period}'
             .replace('${' + 'period' + '}', String(period));
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
         if (period === null || period === undefined) {
-            throw new Error('Required parameter period was null or undefined when calling getMonthlyDeclaration.');
+            throw new Error('Required parameter period was null or undefined when calling getMonthlyStatement.');
         }
         var consumes = [];
         var produces = [
@@ -76,8 +76,8 @@ var ReimbursementApi = (function () {
         }
         return this.http.request(path, requestOptions);
     };
-    ReimbursementApi.prototype.listMonthlyDeclarationsWithHttpInfo = function (count, maxperiod, extraHttpRequestParams) {
-        var path = this.basePath + '/reimbursement/monthly-declarations';
+    ReimbursementApi.prototype.listMonthlyStatementsWithHttpInfo = function (count, maxperiod, extraHttpRequestParams) {
+        var path = this.basePath + '/reimbursement/monthly/statements';
         var queryParameters = new http_1.URLSearchParams();
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
         if (count !== undefined) {

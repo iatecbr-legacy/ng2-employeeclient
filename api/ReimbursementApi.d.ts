@@ -10,8 +10,8 @@ export declare class ReimbursementApi {
     defaultHeaders: Headers;
     configuration: Configuration;
     constructor(http: Http, basePath: string, configuration: Configuration);
-    getMonthlyDeclaration(period: number, extraHttpRequestParams?: any): Observable<models.MonthlyDeclaration>;
-    listMonthlyDeclarations(count?: number, maxperiod?: number, extraHttpRequestParams?: any): Observable<Array<models.MonthlyDeclarationListingItem>>;
-    getMonthlyDeclarationWithHttpInfo(period: number, extraHttpRequestParams?: any): Observable<Response>;
-    listMonthlyDeclarationsWithHttpInfo(count?: number, maxperiod?: number, extraHttpRequestParams?: any): Observable<Response>;
+    getMonthlyStatement(period: number, extraHttpRequestParams?: any): Observable<models.MonthlyReimbursementStatement>;
+    listMonthlyStatements(count?: number, maxperiod?: number, extraHttpRequestParams?: any): Observable<Array<models.MonthlyReimbursementStatementListingItem>>;
+    getMonthlyStatementWithHttpInfo(period: number, extraHttpRequestParams?: any): Observable<Response>;
+    listMonthlyStatementsWithHttpInfo(count?: number, maxperiod?: number, extraHttpRequestParams?: any): Observable<Response>;
 }
