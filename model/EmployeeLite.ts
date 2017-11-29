@@ -12,9 +12,13 @@
 
 import * as models from './models';
 
-export interface IncomeReportListingItem {
-    year?: number;
+export interface EmployeeLite {
+    entityName?: string;
 
-    value?: number;
+    departmentName?: string;
+
+    code?: string;
+
+    name?: string;
 
 }

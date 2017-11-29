@@ -1,8 +1,6 @@
 import * as models from './models';
 export interface VacationReceipt {
-    employeeCode?: string;
-    employeeName?: string;
-    departmentName?: string;
+    employee?: models.EmployeeLite;
     amounts?: Array<models.AmountsEntry>;
     totalEarnings?: number;
     totalDiscounts?: number;
