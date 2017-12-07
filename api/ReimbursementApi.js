@@ -42,6 +42,17 @@ var ReimbursementApi = (function () {
             }
         });
     };
+    ReimbursementApi.prototype.getTravelStatement = function (statementId, extraHttpRequestParams) {
+        return this.getTravelStatementWithHttpInfo(statementId, extraHttpRequestParams)
+            .map(function (response) {
+            if (response.status === 204) {
+                return undefined;
+            }
+            else {
+                return response.json() || {};
+            }
+        });
+    };
     ReimbursementApi.prototype.listMonthlyStatements = function (count, maxperiod, extraHttpRequestParams) {
         return this.listMonthlyStatementsWithHttpInfo(count, maxperiod, extraHttpRequestParams)
             .map(function (response) {
@@ -60,6 +71,29 @@ var ReimbursementApi = (function () {
         var headers = new http_1.Headers(this.defaultHeaders.toJSON());
         if (period === null || period === undefined) {
             throw new Error('Required parameter period was null or undefined when calling getMonthlyStatement.');
+        }
+        var consumes = [];
+        var produces = [
+            'application/json'
+        ];
+        var requestOptions = new http_2.RequestOptions({
+            method: http_2.RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials: this.configuration.withCredentials
+        });
+        if (extraHttpRequestParams) {
+            requestOptions = Object.assign(requestOptions, extraHttpRequestParams);
+        }
+        return this.http.request(path, requestOptions);
+    };
+    ReimbursementApi.prototype.getTravelStatementWithHttpInfo = function (statementId, extraHttpRequestParams) {
+        var path = this.basePath + '/reimbursement/travel/statements/${statementId}'
+            .replace('${' + 'statementId' + '}', String(statementId));
+        var queryParameters = new http_1.URLSearchParams();
+        var headers = new http_1.Headers(this.defaultHeaders.toJSON());
+        if (statementId === null || statementId === undefined) {
+            throw new Error('Required parameter statementId was null or undefined when calling getTravelStatement.');
         }
         var consumes = [];
         var produces = [

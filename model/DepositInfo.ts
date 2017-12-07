@@ -12,21 +12,9 @@
 
 import * as models from './models';
 
-export interface Employee {
-    code?: string;
+export interface DepositInfo {
+    account?: string;
 
-    name?: string;
-
-    position?: string;
-
-    document?: models.EmployeeDocument;
-
-    address?: string;
-
-    department?: string;
-
-    isReligious?: boolean;
-
-    admissionDate?: Date;
+    date?: Date;
 
 }

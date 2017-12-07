@@ -4,7 +4,7 @@ export interface Paycheck {
     employee?: models.Employee;
     period?: string;
     amounts?: Array<models.AmountsEntry>;
-    depositInfo?: string;
+    depositInfo?: models.DepositInfo;
     additionalInfo?: Array<string>;
     baseSalary?: number;
     inssBalance?: number;

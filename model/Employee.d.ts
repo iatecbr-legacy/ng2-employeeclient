@@ -7,4 +7,5 @@ export interface Employee {
     address?: string;
     department?: string;
     isReligious?: boolean;
+    admissionDate?: Date;
 }

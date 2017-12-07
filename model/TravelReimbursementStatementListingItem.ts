@@ -12,21 +12,11 @@
 
 import * as models from './models';
 
-export interface Employee {
-    code?: string;
+export interface TravelReimbursementStatementListingItem {
+    id?: number;
 
-    name?: string;
+    total?: number;
 
-    position?: string;
-
-    document?: models.EmployeeDocument;
-
-    address?: string;
-
-    department?: string;
-
-    isReligious?: boolean;
-
-    admissionDate?: Date;
+    deposited?: boolean;
 
 }
