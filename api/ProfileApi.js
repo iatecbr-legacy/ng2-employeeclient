@@ -61,8 +61,11 @@ var ProfileApi = (function () {
         var produces = [
             'application/json'
         ];
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
+        if (this.configuration.accessToken) {
+            var accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
         }
         var requestOptions = new http_2.RequestOptions({
             method: http_2.RequestMethod.Get,
@@ -83,8 +86,11 @@ var ProfileApi = (function () {
         var produces = [
             'application/json'
         ];
-        if (this.configuration.apiKey) {
-            headers.set('Authorization', this.configuration.apiKey);
+        if (this.configuration.accessToken) {
+            var accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
         }
         headers.set('Content-Type', 'application/json');
         var requestOptions = new http_2.RequestOptions({
