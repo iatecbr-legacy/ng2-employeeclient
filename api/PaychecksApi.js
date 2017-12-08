@@ -90,6 +90,9 @@ var PaychecksApi = (function () {
         var produces = [
             'application/json'
         ];
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
         var requestOptions = new http_2.RequestOptions({
             method: http_2.RequestMethod.Get,
             headers: headers,
@@ -116,6 +119,9 @@ var PaychecksApi = (function () {
         var produces = [
             'application/json'
         ];
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
         var requestOptions = new http_2.RequestOptions({
             method: http_2.RequestMethod.Get,
             headers: headers,
@@ -141,6 +147,9 @@ var PaychecksApi = (function () {
         var produces = [
             'application/json'
         ];
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
         var requestOptions = new http_2.RequestOptions({
             method: http_2.RequestMethod.Get,
             headers: headers,
@@ -166,6 +175,9 @@ var PaychecksApi = (function () {
         var produces = [
             'application/json'
         ];
+        if (this.configuration.apiKey) {
+            headers.set('Authorization', this.configuration.apiKey);
+        }
         var requestOptions = new http_2.RequestOptions({
             method: http_2.RequestMethod.Get,
             headers: headers,
