@@ -1,6 +1,6 @@
 {
   "name": "@iatec/ng2-employeeclient",
-  "version": "1.0.0-preview-14",
+  "version": "1.0.0-preview-15",
   "description": "swagger client for @iatec/ng2-employeeclient",
   "author": "Swagger Codegen Contributors",
   "keywords": [
